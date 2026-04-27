@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating emoji container -->
+  <div id="emoji-rain"></div>
+
+  <!-- History Panel -->
+  <div class="history-panel">
+    <h3>History</h3>
+    <ul id="history-list"></ul>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="btn num" data-val="7">7</button>
+      <button class="btn num" data-val="8">8</button>
+      <button class="btn num" data-val="9">9</button>
+      <button class="btn op"  data-val="/">/</button>
+
+      <button class="btn num" data-val="4">4</button>
+      <button class="btn num" data-val="5">5</button>
+      <button class="btn num" data-val="6">6</button>
+      <button class="btn op"  data-val="*">*</button>
+
+      <button class="btn num" data-val="1">1</button>
+      <button class="btn num" data-val="2">2</button>
+      <button class="btn num" data-val="3">3</button>
+      <button class="btn op"  data-val="-">-</button>
+
+      <button class="btn num" data-val="0">0</button>
+      <button class="btn eq"  id="equals">=</button>
+      <button class="btn clear" id="clear">C</button>
+      <button class="btn op"  data-val="+">+</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

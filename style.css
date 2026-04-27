@@ -1,0 +1,175 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Floating Emojis ── */
+#emoji-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.emoji-particle {
+  position: absolute;
+  font-size: clamp(18px, 3vw, 32px);
+  top: -50px;
+  animation: fallDown linear forwards;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes fallDown {
+  0%   { transform: translateY(0)   rotate(0deg);   opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── History Panel ── */
+.history-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  background: rgba(30,30,30,0.85);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.history-panel h3 {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+#history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#history-list li {
+  color: #e0e0e0;
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Calculator Card ── */
+.calculator {
+  position: relative;
+  z-index: 5;
+  background: #f4b8c8;
+  border-radius: 24px;
+  padding: 20px;
+  width: 300px;
+  box-shadow:
+    0 0 0 3px #f08aa0,
+    0 0 40px rgba(240,138,160,0.6),
+    0 20px 60px rgba(0,0,0,0.6);
+  animation: floatCalc 4s ease-in-out infinite;
+}
+
+@keyframes floatCalc {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Display ── */
+.display {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: right;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  min-height: 58px;
+  word-break: break-all;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ── Buttons Grid ── */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+  outline: none;
+}
+
+/* Number buttons */
+.btn.num {
+  background: #fff;
+  color: #444;
+  box-shadow: 0 4px 0 #d4d4d4;
+}
+
+/* Operator buttons */
+.btn.op {
+  background: #ffe0e8;
+  color: #c0446a;
+  box-shadow: 0 4px 0 #e8b0c0;
+}
+
+/* Equals */
+.btn.eq {
+  background: #ff6b95;
+  color: #fff;
+  box-shadow: 0 4px 0 #cc4470;
+}
+
+/* Clear */
+.btn.clear {
+  background: #ffd6df;
+  color: #c04060;
+  box-shadow: 0 4px 0 #e0a0b0;
+}
+
+/* Hover & Active */
+.btn:hover { filter: brightness(1.06); }
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: none !important;
+}
+
+/* ── Scrollbar styling ── */
+#history-list::-webkit-scrollbar { width: 4px; }
+#history-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
